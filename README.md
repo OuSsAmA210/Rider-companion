@@ -19,3 +19,12 @@ rider-companion/
 ├── web-app/
 ├── android-app/
 └── docs/
+
+## Démarrer le backend en local
+
+Le profil Spring `local` utilise une base H2 en mémoire, sans PostgreSQL installé :
+
+```bash
+cd backend/rider-companion
+bash ./mvnw spring-boot:run -Dspring-boot.run.profiles=local
+```
