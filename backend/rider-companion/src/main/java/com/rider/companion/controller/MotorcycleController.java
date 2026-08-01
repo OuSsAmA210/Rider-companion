@@ -74,6 +74,7 @@ public class MotorcycleController {
         return motorcycleService.updateMotorcycle(id, motorcycle);
     }
 
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "Delete a motorcycle")

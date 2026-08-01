@@ -1,17 +1,14 @@
 package com.rider.companion.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "motorcycles")
@@ -26,6 +23,9 @@ public class MotocycleEntity {
     @Schema(example = "1", accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
 
+    @Schema(example = "1")
+    private Long userId;
+
     @Schema(example = "Yamaha")
     @NotBlank(message = "Brand is required")
     private String brand;
@@ -38,4 +38,37 @@ public class MotocycleEntity {
     @Min(value = 1885, message = "Year must be 1885 or later")
     @Column(name = "manufacture_year")
     private Integer year;
+
+    @Schema(example = "689")
+    private Integer engineCapacity;
+
+    @Schema(example = "74")
+    private Integer power;
+
+    @Schema(example = "Gasoline")
+    private String fuelType;
+
+    @Schema(example = "123 TUN 456")
+    private String registrationNumber;
+
+    @Schema(example = "2024-01-15")
+    private LocalDate purchaseDate;
+
+    @Schema(example = "15000")
+    private Integer currentMileage;
+
+    @Schema(example = "4.5")
+    private Double averageConsumption;
+
+    @Schema(example = "https://example.com/mt07.jpg")
+    private String imageUrl;
+
+    @Schema(example = "true")
+    private Boolean primaryMotorcycle;
+
+    @Schema(example = "2026-08-01")
+    private LocalDate createdAt;
+
+    @Schema(example = "2026-08-01")
+    private LocalDate updatedAt;
 }

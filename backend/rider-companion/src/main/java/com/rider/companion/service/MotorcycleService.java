@@ -30,10 +30,25 @@ public class MotorcycleService {
     }
 
     public MotocycleEntity updateMotorcycle(Long id, MotocycleEntity changes) {
+
         MotocycleEntity motorcycle = getMotorcycleById(id);
+
+        motorcycle.setUserId(changes.getUserId());
         motorcycle.setBrand(changes.getBrand());
         motorcycle.setModel(changes.getModel());
         motorcycle.setYear(changes.getYear());
+        motorcycle.setEngineCapacity(changes.getEngineCapacity());
+        motorcycle.setPower(changes.getPower());
+        motorcycle.setFuelType(changes.getFuelType());
+        motorcycle.setRegistrationNumber(changes.getRegistrationNumber());
+        motorcycle.setPurchaseDate(changes.getPurchaseDate());
+        motorcycle.setCurrentMileage(changes.getCurrentMileage());
+        motorcycle.setAverageConsumption(changes.getAverageConsumption());
+        motorcycle.setImageUrl(changes.getImageUrl());
+        motorcycle.setPrimaryMotorcycle(changes.getPrimaryMotorcycle());
+        motorcycle.setCreatedAt(changes.getCreatedAt());
+        motorcycle.setUpdatedAt(changes.getUpdatedAt());
+
         return repository.save(motorcycle);
     }
 

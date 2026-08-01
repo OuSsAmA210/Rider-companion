@@ -2,6 +2,7 @@ package com.rider.companion.controller;
 
 import com.rider.companion.service.MotorcycleNotFoundException;
 import com.rider.companion.service.RiderNotFoundException;
+import com.rider.companion.service.MaintenanceRecordNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -35,5 +36,13 @@ public class ApiExceptionHandler {
             RiderNotFoundException exception
     ) {
         return Map.of("message", exception.getMessage());
+    }
+    @ExceptionHandler(MaintenanceRecordNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, String> handleMaintenanceRecordNotFound(
+            MaintenanceRecordNotFoundException exception) {
+
+        return Map.of("message", exception.getMessage()
+        );
     }
 }
