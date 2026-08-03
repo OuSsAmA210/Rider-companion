@@ -3,6 +3,9 @@ package com.rider.companion.controller;
 import com.rider.companion.service.MotorcycleNotFoundException;
 import com.rider.companion.service.RiderNotFoundException;
 import com.rider.companion.service.MaintenanceRecordNotFoundException;
+import com.rider.companion.service.UserNotFoundException;
+import com.rider.companion.service.RideNotFoundException;
+import com.rider.companion.service.RideChecklistItemNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -43,6 +46,36 @@ public class ApiExceptionHandler {
             MaintenanceRecordNotFoundException exception) {
 
         return Map.of("message", exception.getMessage()
+        );
+    }
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, String> handleUserNotFound(
+            UserNotFoundException exception) {
+
+        return Map.of(
+                "message",
+                exception.getMessage()
+        );
+    }
+    @ExceptionHandler(RideNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, String> handleRideNotFound(
+            RideNotFoundException exception) {
+
+        return Map.of(
+                "message",
+                exception.getMessage()
+        );
+    }
+    @ExceptionHandler(RideChecklistItemNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, String> handleRideChecklistItemNotFound(
+            RideChecklistItemNotFoundException exception) {
+
+        return Map.of(
+                "message",
+                exception.getMessage()
         );
     }
 }
