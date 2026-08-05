@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @Entity
 @Table(name = "ride_checklist_items")
 @Schema(description = "A checklist item associated with a ride")
@@ -20,8 +19,9 @@ public class RideChecklistItemEntity {
     private Long id;
 
     @Schema(example = "1")
-    private Long rideId;
-
+    @ManyToOne
+    @JoinColumn(name = "ride_id")
+    private RideEntity ride;
     @Schema(example = "Check tire pressure")
     private String label;
 

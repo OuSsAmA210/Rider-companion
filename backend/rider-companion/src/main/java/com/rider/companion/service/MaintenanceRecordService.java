@@ -41,8 +41,8 @@ public class MaintenanceRecordService {
         MaintenanceRecordEntity maintenanceRecord =
                 getMaintenanceRecordById(id);
 
-        maintenanceRecord.setMotorcycleId(
-                changes.getMotorcycleId());
+        maintenanceRecord.setMotorcycle(
+                changes.getMotorcycle());
 
         maintenanceRecord.setMaintenanceType(
                 changes.getMaintenanceType());

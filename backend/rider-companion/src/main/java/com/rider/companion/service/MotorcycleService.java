@@ -33,7 +33,7 @@ public class MotorcycleService {
 
         MotocycleEntity motorcycle = getMotorcycleById(id);
 
-        motorcycle.setUserId(changes.getUserId());
+        motorcycle.setUser(changes.getUser());
         motorcycle.setBrand(changes.getBrand());
         motorcycle.setModel(changes.getModel());
         motorcycle.setYear(changes.getYear());

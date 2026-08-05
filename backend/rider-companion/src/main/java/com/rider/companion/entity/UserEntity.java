@@ -7,7 +7,8 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import jakarta.persistence.OneToMany;
+import java.util.List;
 import java.time.LocalDate;
 
 @Entity
@@ -44,4 +45,11 @@ public class UserEntity {
 
     @Schema(example = "2026-08-01")
     private LocalDate updatedAt;
+
+    @OneToMany(mappedBy = "user")
+    private List<MotocycleEntity> motorcycles;
+
+    @OneToMany(mappedBy = "user")
+    private List<RideEntity> rides;
+
 }

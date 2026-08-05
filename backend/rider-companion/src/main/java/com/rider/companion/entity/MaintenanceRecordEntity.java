@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -27,7 +29,9 @@ public class MaintenanceRecordEntity {
     private Long id;
 
     @Schema(example = "1", description = "Associated motorcycle identifier")
-    private Long motorcycleId;
+    @ManyToOne
+    @JoinColumn(name = "motorcycle_id")
+    private MotocycleEntity motorcycle;
 
     @Schema(example = "Oil Change")
     private String maintenanceType;

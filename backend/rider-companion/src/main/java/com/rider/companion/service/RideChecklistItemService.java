@@ -40,7 +40,7 @@ public class RideChecklistItemService {
         RideChecklistItemEntity item =
                 getRideChecklistItemById(id);
 
-        item.setRideId(changes.getRideId());
+        item.setRide(changes.getRide());
         item.setLabel(changes.getLabel());
         item.setChecked(changes.getChecked());
 

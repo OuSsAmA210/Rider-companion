@@ -9,7 +9,9 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import java.util.List;
 @Entity
 @Table(name = "rides")
 @Schema(description = "A motorcycle trip planned or completed by a rider")
@@ -24,10 +26,14 @@ public class RideEntity {
     private Long id;
 
     @Schema(example = "1")
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
     @Schema(example = "1")
-    private Long motorcycleId;
+    @ManyToOne
+    @JoinColumn(name = "motorcycle_id")
+    private MotocycleEntity motorcycle;
 
     @Schema(example = "Weekend Trip")
     private String title;
@@ -85,4 +91,7 @@ public class RideEntity {
 
     @Schema(example = "2026-08-01")
     private LocalDate updatedAt;
+
+    @OneToMany(mappedBy = "ride")
+    private List<RideChecklistItemEntity> checklistItems;
 }

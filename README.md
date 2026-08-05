@@ -39,3 +39,82 @@ When the backend is running, OpenAPI documentation is available at:
 
 - Swagger UI: [http://localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
 - OpenAPI JSON: [http://localhost:8081/v3/api-docs](http://localhost:8081/v3/api-docs)
+## diagramme UML
+```text
++------------------+
+|       User       |
++------------------+
+| id               |
+| firstName        |
+| lastName         |
+| email            |
+| passwordHash     |
+| createdAt        |
+| updatedAt        |
++------------------+
+        |
+        | 1..1
+        |
+        v
++------------------+
+|  RiderProfile    |
++------------------+
+| id               |
+| licenseType      |
+| licenseYear      |
+| experienceLevel  |
+| primaryUsage     |
+| estimatedAnnualDistance |
++------------------+
+
+        |
+        | 1..*
+        |
+        v
++------------------+
+|    Motorcycle    |
++------------------+
+| id               |
+| brand            |
+| model            |
+| year             |
+| engineCapacity   |
+| power            |
+| fuelType         |
+| registrationNumber|
+| purchaseDate     |
+| currentMileage   |
+| averageConsumption|
+| imageUrl         |
+| primaryMotorcycle|
++------------------+
+        |
+        | 1..*
+        |
+        +-------------------+
+        |                   |
+        v                   v
+
++------------------+   +------------------+
+| MaintenanceRecord|   |       Ride       |
++------------------+   +------------------+
+| id               |   | id               |
+| maintenanceType  |   | title            |
+| status           |   | plannedDate      |
+| completionDate   |   | destination      |
+| mileage          |   | estimatedDistance|
+| cost             |   | rideType         |
+| serviceProvider  |   | status           |
++------------------+   +------------------+
+                                |
+                                | 1..*
+                                |
+                                v
+                    +----------------------+
+                    | RideChecklistItem    |
+                    +----------------------+
+                    | id                   |
+                    | label                |
+                    | checked              |
+                    +----------------------+
+```

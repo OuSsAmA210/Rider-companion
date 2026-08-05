@@ -7,7 +7,10 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 import java.time.LocalDate;
 
 @Entity
@@ -24,7 +27,9 @@ public class MotocycleEntity {
     private Long id;
 
     @Schema(example = "1")
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
 
     @Schema(example = "Yamaha")
     @NotBlank(message = "Brand is required")
@@ -71,4 +76,10 @@ public class MotocycleEntity {
 
     @Schema(example = "2026-08-01")
     private LocalDate updatedAt;
+
+    @OneToMany(mappedBy = "motorcycle")
+    private List<MaintenanceRecordEntity> maintenanceRecords;
+
+    @OneToMany(mappedBy = "motorcycle")
+    private List<RideEntity> rides;
 }

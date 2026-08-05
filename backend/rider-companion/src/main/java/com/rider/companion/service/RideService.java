@@ -33,8 +33,8 @@ public class RideService {
 
         RideEntity ride = getRideById(id);
 
-        ride.setUserId(changes.getUserId());
-        ride.setMotorcycleId(changes.getMotorcycleId());
+        ride.setUser(changes.getUser());
+        ride.setMotorcycle(changes.getMotorcycle());
         ride.setTitle(changes.getTitle());
 
         ride.setPlannedDate(changes.getPlannedDate());
