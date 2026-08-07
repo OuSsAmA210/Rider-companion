@@ -23,46 +23,46 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class MaintenanceRecordEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Schema(example = "1", accessMode = Schema.AccessMode.READ_ONLY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Schema(example = "1", accessMode = Schema.AccessMode.READ_ONLY)
+  private Long id;
 
-    @Schema(example = "1", description = "Associated motorcycle identifier")
-    @ManyToOne
-    @JoinColumn(name = "motorcycle_id")
-    private MotocycleEntity motorcycle;
+  @Schema(example = "1", description = "Associated motorcycle identifier")
+  @ManyToOne
+  @JoinColumn(name = "motorcycle_id")
+  private MotocycleEntity motorcycle;
 
-    @Schema(example = "Oil Change")
-    private String maintenanceType;
+  @Schema(example = "Oil Change")
+  private String maintenanceType;
 
-    @Schema(example = "COMPLETED")
-    private String status;
+  @Schema(example = "COMPLETED")
+  private String status;
 
-    @Schema(example = "2026-07-31")
-    private LocalDate completionDate;
+  @Schema(example = "2026-07-31")
+  private LocalDate completionDate;
 
-    @Schema(example = "2026-08-15")
-    private LocalDate plannedDate;
+  @Schema(example = "2026-08-15")
+  private LocalDate plannedDate;
 
-    @Schema(example = "15000")
-    private Integer mileage;
+  @Schema(example = "15000")
+  private Integer mileage;
 
-    @Schema(example = "18000")
-    private Integer plannedMileage;
+  @Schema(example = "18000")
+  private Integer plannedMileage;
 
-    @Schema(example = "120.50")
-    private BigDecimal cost;
+  @Schema(example = "120.50")
+  private BigDecimal cost;
 
-    @Schema(example = "Yamaha Service Center")
-    private String serviceProvider;
+  @Schema(example = "Yamaha Service Center")
+  private String serviceProvider;
 
-    @Schema(example = "Changed oil and filter")
-    private String notes;
+  @Schema(example = "Changed oil and filter")
+  private String notes;
 
-    @Schema(example = "2026-07-31")
-    private LocalDate createdAt;
+  @Schema(example = "2026-07-31")
+  private LocalDate createdAt;
 
-    @Schema(example = "2026-08-01")
-    private LocalDate updatedAt;
+  @Schema(example = "2026-08-01")
+  private LocalDate updatedAt;
 }

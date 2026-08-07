@@ -1,7 +1,13 @@
 package com.rider.companion.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.*;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -21,65 +27,65 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class MotocycleEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Schema(example = "1", accessMode = Schema.AccessMode.READ_ONLY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Schema(example = "1", accessMode = Schema.AccessMode.READ_ONLY)
+  private Long id;
 
-    @Schema(example = "1")
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity user;
+  @Schema(example = "1")
+  @ManyToOne
+  @JoinColumn(name = "user_id", nullable = false)
+  private UserEntity user;
 
-    @Schema(example = "Yamaha")
-    @NotBlank(message = "Brand is required")
-    private String brand;
+  @Schema(example = "Yamaha")
+  @NotBlank(message = "Brand is required")
+  private String brand;
 
-    @Schema(example = "MT-07")
-    @NotBlank(message = "Model is required")
-    private String model;
+  @Schema(example = "MT-07")
+  @NotBlank(message = "Model is required")
+  private String model;
 
-    @Schema(example = "2024")
-    @Min(value = 1885, message = "Year must be 1885 or later")
-    @Column(name = "manufacture_year")
-    private Integer year;
+  @Schema(example = "2024")
+  @Min(value = 1885, message = "Year must be 1885 or later")
+  @Column(name = "manufacture_year")
+  private Integer year;
 
-    @Schema(example = "689")
-    private Integer engineCapacity;
+  @Schema(example = "689")
+  private Integer engineCapacity;
 
-    @Schema(example = "74")
-    private Integer power;
+  @Schema(example = "74")
+  private Integer power;
 
-    @Schema(example = "Gasoline")
-    private String fuelType;
+  @Schema(example = "Gasoline")
+  private String fuelType;
 
-    @Schema(example = "123 TUN 456")
-    private String registrationNumber;
+  @Schema(example = "123 TUN 456")
+  private String registrationNumber;
 
-    @Schema(example = "2024-01-15")
-    private LocalDate purchaseDate;
+  @Schema(example = "2024-01-15")
+  private LocalDate purchaseDate;
 
-    @Schema(example = "15000")
-    private Integer currentMileage;
+  @Schema(example = "15000")
+  private Integer currentMileage;
 
-    @Schema(example = "4.5")
-    private Double averageConsumption;
+  @Schema(example = "4.5")
+  private Double averageConsumption;
 
-    @Schema(example = "https://example.com/mt07.jpg")
-    private String imageUrl;
+  @Schema(example = "https://example.com/mt07.jpg")
+  private String imageUrl;
 
-    @Schema(example = "true")
-    private Boolean primaryMotorcycle;
+  @Schema(example = "true")
+  private Boolean primaryMotorcycle;
 
-    @Schema(example = "2026-08-01")
-    private LocalDate createdAt;
+  @Schema(example = "2026-08-01")
+  private LocalDate createdAt;
 
-    @Schema(example = "2026-08-01")
-    private LocalDate updatedAt;
+  @Schema(example = "2026-08-01")
+  private LocalDate updatedAt;
 
-    @OneToMany(mappedBy = "motorcycle")
-    private List<MaintenanceRecordEntity> maintenanceRecords;
+  @OneToMany(mappedBy = "motorcycle")
+  private List<MaintenanceRecordEntity> maintenanceRecords;
 
-    @OneToMany(mappedBy = "motorcycle")
-    private List<RideEntity> rides;
+  @OneToMany(mappedBy = "motorcycle")
+  private List<RideEntity> rides;
 }

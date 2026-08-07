@@ -10,18 +10,17 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OpenApiConfig {
-
-    @Bean
-    public OpenAPI riderCompanionOpenAPI() {
-        return new OpenAPI()
-                .info(new Info()
-                        .title("Rider Companion API")
-                        .version("v1")
-                        .description("REST API for managing motorcycles, maintenance, and rides.")
-                        .contact(new Contact().name("Rider Companion team"))
-                        .license(new License().name("Private")))
-                .addServersItem(new Server()
-                        .url("http://localhost:8081")
-                        .description("Local development server"));
-    }
+  @Bean
+  public OpenAPI riderCompanionOpenAPI() {
+    return new OpenAPI()
+        .info(
+            new Info()
+                .title("Rider Companion API")
+                .version("v1")
+                .description("REST API for managing motorcycles, maintenance, and rides.")
+                .contact(new Contact().name("Rider Companion team"))
+                .license(new License().name("Private")))
+        .addServersItem(
+            new Server().url("http://localhost:8081").description("Local development server"));
+  }
 }

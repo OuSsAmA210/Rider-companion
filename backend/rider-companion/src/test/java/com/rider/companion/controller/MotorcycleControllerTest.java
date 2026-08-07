@@ -1,6 +1,8 @@
 package com.rider.companion.controller;
 
+import com.rider.companion.entity.UserEntity;
 import com.rider.companion.repository.MotorcycleRepository;
+import com.rider.companion.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +30,27 @@ class MotorcycleControllerTest {
     @Autowired
     private MotorcycleRepository repository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @BeforeEach
     void clearDatabase() {
         repository.deleteAll();
+        userRepository.deleteAll();
     }
 
     @Test
     void performsFullCrudLifecycle() throws Exception {
+        UserEntity user = new UserEntity();
+        user.setFirstName("Oussama");
+        user.setLastName("Bouhastine");
+        user.setEmail("oussama@example.com");
+        user.setPasswordHash("hashed-password");
+        user = userRepository.save(user);
+
         String createBody = """
-                {"brand":"Yamaha","model":"MT-07","year":2024}
-                """;
+                {"user":%d,"brand":"Yamaha","model":"MT-07","year":2024}
+                """.formatted(user.getId());
 
         mockMvc.perform(post(MOTORCYCLES_URL)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -58,7 +71,8 @@ class MotorcycleControllerTest {
 
         mockMvc.perform(put(MOTORCYCLES_URL + "/{id}", id)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"brand\":\"Yamaha\",\"model\":\"MT-09\",\"year\":2025}"))
+                        .content(("{\"user\":%d,\"brand\":\"Yamaha\",\"model\":\"MT-09\",\"year\":2025}")
+                                .formatted(user.getId())))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.model").value("MT-09"));
 
